@@ -168,7 +168,7 @@ with st.sidebar:
     st.caption("Avis de non-responsabilité : Cette application est un prototype à visée académique et ne remplace en aucun cas un diagnostic médical professionnel.")
 
 # --- Main Layout ---
-st.markdown('<div class="header-title">🫀 CardioCheck AI</div>', unsafe_allow_html=True)
+st.markdown('<div class="header-title">🩵 CardioCheck AI</div>', unsafe_allow_html=True)
 st.markdown('<div class="sub-title">Intelligence Artificielle pour la Prédiction du Risque Cardiaque</div>', unsafe_allow_html=True)
 
 if model is None or preprocessor is None:
@@ -184,12 +184,11 @@ if model is None or preprocessor is None:
     """)
 else:
     # --- Input Form ---
-    st.markdown('<div class="glass-card">', unsafe_allow_html=True)
     st.subheader("📋 Formulaire d'évaluation du patient")
     
     tab1, tab2 = st.tabs(["📋 Données Cliniques", "🩺 Examens & Diagnostics"])
     
-    with st.form("patient_assessment_form"):
+    with st.form("patient_assessment_form", border=False):
         with tab1:
             col1, col2 = st.columns(2)
             with col1:
@@ -251,9 +250,8 @@ else:
                 )
         
         st.markdown("<br>", unsafe_allow_html=True)
-        submitted = st.form_submit_button("🩺 Lancer l'analyse diagnostique")
-    
-    st.markdown('</div>', unsafe_allow_html=True)
+        with st.container(border=True):
+            submitted = st.form_submit_button("🩺 Lancer l'analyse diagnostique")
     
     # --- Prediction Output ---
     if submitted:
